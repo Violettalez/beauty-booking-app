@@ -29,8 +29,6 @@ body {
   padding: 0 30px;
 }
 
-/* Header Style */
-
 .header {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
@@ -500,7 +498,6 @@ body {
   border-radius: 5px;
 }
 
-/* Footer Styles */
 .footer {
   background: linear-gradient(135deg, #2c3e50 0%, #1a2632 100%);
   color: #ffffff;
@@ -533,7 +530,6 @@ body {
   margin-bottom: 50px;
 }
 
-/* Footer columns */
 .footer-col {
   display: flex;
   flex-direction: column;
@@ -573,7 +569,6 @@ body {
   font-size: 14px;
 }
 
-/* Social networks */
 .footer-social {
   display: flex;
   gap: 15px;
@@ -608,7 +603,6 @@ body {
   fill: #2c3e50;
 }
 
-/* Headings */
 .footer-title {
   color: var(--secondary, #e8c5b0);
   font-size: 18px;
@@ -628,7 +622,6 @@ body {
   background: linear-gradient(90deg, var(--secondary, #e8c5b0), transparent);
 }
 
-/* Link lists */
 .footer-links {
   list-style: none;
   padding: 0;
@@ -669,7 +662,6 @@ body {
   left: -5px;
 }
 
-/* Contact information */
 .footer-contact li {
   display: flex;
   align-items: center;
@@ -688,7 +680,6 @@ body {
   line-height: 1.4;
 }
 
-/* Footer bottom */
 .footer-bottom {
   padding-top: 30px;
   border-top: 1px solid rgba(232, 197, 176, 0.2);
@@ -818,7 +809,6 @@ body {
   animation: fadeInUp 0.8s ease forwards;
 }
 
-/* ===== HERO SECTION ===== */
 .hero {
   height: 90vh;
   min-height: 600px;
@@ -892,7 +882,6 @@ body {
   background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
 }
 
-/* ===== CATEGORIES ===== */
 .categories {
   margin-top: 0;
 }
@@ -960,7 +949,6 @@ body {
   z-index: 2;
 }
 
-/* ===== HOW IT WORKS ===== */
 .steps {
   margin: 80px auto;
 }
@@ -1019,7 +1007,6 @@ body {
   margin: 0 auto;
 }
 
-/* ===== CTA SECTION ===== */
 .cta {
   background: linear-gradient(135deg, var(--primary) 0%, var(--bg-dark) 100%);
   padding: 100px 0;
@@ -1077,7 +1064,6 @@ body {
   box-shadow: 0 10px 30px rgba(255, 255, 255, 0.4);
 }
 
-/* ===== FAQ ===== */
 .faq {
   max-width: 900px;
   margin: 80px auto;
@@ -1162,7 +1148,6 @@ body {
   line-height: 1.8;
 }
 
-/* ===== ANIMATIONS ===== */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -1204,7 +1189,6 @@ body {
   animation-delay: 0.3s;
 }
 
-/* ===== RESPONSIVE ===== */
 @media screen and (max-width: 1024px) {
   h2 {
     font-size: 32px;
@@ -1339,7 +1323,6 @@ h2::after {
   background: linear-gradient(90deg, var(--secondary), var(--accent));
   border-radius: 3px;
 }
-/* ===== REVIEWS SECTION ===== */
 
 .reviews {
   margin: 80px 0;

@@ -1,6 +1,4 @@
-/* ===== ABOUT PAGE STYLES ===== */
-
-/* Hero секция */
+.about {
 .about {
   background: linear-gradient(
       135deg,
@@ -46,7 +44,7 @@
   animation: fadeInUp 0.8s ease 0.2s both;
 }
 
-/* Our Story секция */
+.about-our-story {
 .about-our-story {
   margin: 80px auto;
   text-align: center;
@@ -69,7 +67,7 @@
   margin-bottom: 0;
 }
 
-/* Our Values секция */
+.about-values {
 .about-values {
   margin: 80px auto;
 }
@@ -141,7 +139,7 @@
   margin: 0;
 }
 
-/* Meet The Team секция */
+.about-team {
 .about-team {
   margin: 80px auto;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
@@ -215,7 +213,6 @@
   background: var(--secondary);
 }
 
-/* Testimonials секция */
 .about-testimonials {
   margin: 80px auto;
 }
@@ -273,7 +270,6 @@
   color: var(--secondary);
 }
 
-/* Join CTA секция */
 .about-cta {
   margin: 80px auto;
 }
@@ -347,7 +343,7 @@
   box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
 }
 
-/* Анимации */
+.about-animations {
 @keyframes fadeInDown {
   from {
     opacity: 0;
@@ -370,7 +366,7 @@
   }
 }
 
-/* Анимации для карточек */
+.about-card-animations {
 .value-card,
 .team-member,
 .testimonial {
@@ -405,7 +401,7 @@
   animation-delay: 0.2s;
 }
 
-/* Адаптивность */
+.about-responsive {
 @media screen and (max-width: 1024px) {
   .about h1 {
     font-size: 48px;
@@ -536,7 +532,7 @@
   }
 }
 
-/* Эффекты при скролле */
+.about-scroll-effects {
 @media (prefers-reduced-motion: no-preference) {
   .value-card,
   .team-member,
@@ -545,12 +541,12 @@
   }
 }
 
-/* Стили для цитат */
+.about-blockquote-styles {
 .testimonial {
   quotes: "“" "”" "‘" "’";
 }
 
-/* Дополнительные декоративные элементы */
+.about-decorative {
 .about-our-story {
   position: relative;
 }
@@ -578,7 +574,7 @@
   }
 }
 
-/* Улучшенные ховеры для team-member */
+.about-team-hover {
 .team-member {
   cursor: pointer;
 }
