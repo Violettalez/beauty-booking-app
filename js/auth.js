@@ -46,7 +46,7 @@ class AuthSystem {
     try {
       localStorage.setItem(
         "beautybook_users_backup",
-        JSON.stringify(this.users, null, 2)
+        JSON.stringify(this.users, null, 2),
       );
 
       const dataStr = JSON.stringify({ users: this.users }, null, 2);
@@ -144,7 +144,7 @@ class AuthSystem {
         name: user.name,
         email: user.email,
         phone: user.phone,
-      })
+      }),
     );
 
     return { success: true, message: "Login successful!", user };
@@ -249,10 +249,10 @@ class AuthSystem {
         if (result.success) {
           this.showNotification(
             "Registration successful! Redirecting...",
-            "success"
+            "success",
           );
           setTimeout(() => {
-            window.location.href = "login.html";
+            window.location.href = "/login/";
           }, 2000);
         } else {
           this.showNotification(result.message, "error");
@@ -363,7 +363,7 @@ class AuthSystem {
         if (result.success) {
           this.showNotification("Login successful!", "success");
           setTimeout(() => {
-            window.location.href = "index.html";
+            window.location.href = "/";
           }, 1500);
         } else {
           this.showNotification(result.message, "error");
