@@ -25,13 +25,13 @@ body {
   padding: 20px;
 }
 
-.header {
+.page-header {
   text-align: center;
   margin-bottom: 40px;
   padding: 30px 0;
 }
 
-.header h1 {
+.page-header h1 {
   font-size: 3rem;
   color: var(--primary-color);
   margin-bottom: 10px;
