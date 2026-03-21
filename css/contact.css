@@ -1,0 +1,363 @@
+/* ========== CONTACT FORM STYLES ========== */
+/* BeautyBook Aesthetic - Soft, Elegant, Modern */
+
+.contact-card {
+  background: #ffffff;
+  border-radius: 32px;
+  padding: 40px 48px;
+  box-shadow:
+    0 20px 40px -12px rgba(0, 0, 0, 0.08),
+    0 4px 12px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s ease;
+}
+
+.contact-card h1 {
+  font-size: 2.25rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #2d3e50 0%, #4a627a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.contact-card .subtitle {
+  font-size: 1rem;
+  color: #6b7a8a;
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #2d3e50;
+  letter-spacing: 0.3px;
+}
+
+.form-group .required {
+  color: #e57c6e;
+  font-weight: 700;
+  margin-left: 2px;
+}
+
+.form-group input,
+.form-group textarea {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 12px 16px;
+  border: 1.5px solid #e8edf2;
+  border-radius: 16px;
+  background: #fefefe;
+  transition: all 0.2s ease;
+  outline: none;
+  color: #2d3e50;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #e5b8b4;
+  box-shadow: 0 0 0 4px rgba(229, 184, 180, 0.15);
+  background: #ffffff;
+}
+
+.form-group input:hover:not(:focus),
+.form-group textarea:hover:not(:focus) {
+  border-color: #d4dce4;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #b8c4ce;
+  font-weight: 400;
+}
+
+/* Error states */
+.form-group.error input,
+.form-group.error textarea {
+  border-color: #e57c6e;
+  background-color: #fff8f7;
+}
+
+.error-message {
+  font-size: 0.75rem;
+  color: #e57c6e;
+  margin-top: 4px;
+  min-height: 20px;
+  font-weight: 500;
+  display: none;
+}
+
+/* Button styling - matches BeautyBook aesthetic */
+.auth-btn {
+  background: linear-gradient(135deg, #e5b8b4 0%, #d4a09b 100%);
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 6px rgba(229, 184, 180, 0.3);
+  letter-spacing: 0.3px;
+}
+
+.auth-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #d4a09b 0%, #c28b85 100%);
+  box-shadow: 0 8px 20px rgba(229, 184, 180, 0.4);
+}
+
+.auth-btn:active {
+  transform: translateY(0);
+}
+
+.auth-btn:focus-visible {
+  outline: 2px solid #e5b8b4;
+  outline-offset: 2px;
+}
+
+/* Success message */
+#contactSuccess {
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+#contactSuccess.success {
+  color: #6b9a7a;
+}
+
+#contactSuccess.error {
+  color: #e57c6e;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+  .contact-card {
+    margin: 0 24px;
+    padding: 32px 36px;
+  }
+
+  .contact-card h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Mobile Landscape & Small Tablet (576px - 768px) */
+@media (max-width: 768px) {
+  .container {
+    padding: 32px 16px !important;
+  }
+
+  .contact-card {
+    padding: 28px 24px;
+    border-radius: 28px;
+  }
+
+  .contact-card h1 {
+    font-size: 1.75rem;
+  }
+
+  .contact-card .subtitle {
+    font-size: 0.9375rem;
+    margin-bottom: 28px;
+  }
+
+  .contact-form {
+    gap: 20px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 10px 14px;
+    font-size: 0.9375rem;
+    border-radius: 14px;
+  }
+
+  .auth-btn {
+    padding: 10px 24px;
+    font-size: 0.875rem;
+  }
+
+  .flex-wrapper {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 16px !important;
+  }
+}
+
+/* Mobile Portrait (320px - 576px) */
+@media (max-width: 576px) {
+  .container {
+    padding: 24px 12px !important;
+  }
+
+  .contact-card {
+    padding: 24px 20px;
+    border-radius: 24px;
+    box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.06);
+  }
+
+  .contact-card h1 {
+    font-size: 1.5rem;
+  }
+
+  .contact-card .subtitle {
+    font-size: 0.875rem;
+    margin-bottom: 24px;
+  }
+
+  .contact-form {
+    gap: 18px;
+  }
+
+  .form-group {
+    gap: 6px;
+  }
+
+  .form-group label {
+    font-size: 0.8125rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 10px 12px;
+    font-size: 0.875rem;
+    border-radius: 12px;
+  }
+
+  .auth-btn {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 0.9375rem;
+  }
+
+  .flex-wrapper {
+    flex-direction: column;
+    gap: 12px !important;
+  }
+
+  #contactSuccess {
+    text-align: center;
+    width: 100%;
+  }
+
+  .error-message {
+    font-size: 0.6875rem;
+  }
+}
+
+/* Small Mobile (up to 380px) */
+@media (max-width: 380px) {
+  .contact-card {
+    padding: 20px 16px;
+    border-radius: 20px;
+  }
+
+  .contact-card h1 {
+    font-size: 1.375rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 8px 12px;
+    font-size: 0.8125rem;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .form-group input,
+  .form-group textarea,
+  .auth-btn {
+    font-size: 16px; /* Prevents zoom on focus in iOS */
+  }
+
+  .auth-btn {
+    min-height: 48px;
+  }
+}
+
+/* Dark mode support (optional - respecting user preference) */
+@media (prefers-color-scheme: dark) {
+  .contact-card {
+    background: #1e2a32;
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.25);
+  }
+
+  .contact-card h1 {
+    background: linear-gradient(135deg, #e5b8b4 0%, #f0d0cc 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .contact-card .subtitle {
+    color: #9aabb8;
+  }
+
+  .form-group label {
+    color: #e8edf2;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    background: #2a3843;
+    border-color: #3e4d5a;
+    color: #f5f7fa;
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: #6f8495;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: #e5b8b4;
+    background: #2a3843;
+  }
+}
+
+/* Accessibility - reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .contact-card,
+  .auth-btn,
+  .form-group input,
+  .form-group textarea {
+    transition: none;
+  }
+
+  .auth-btn:hover {
+    transform: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .form-group input,
+  .form-group textarea {
+    border-width: 2px;
+  }
+
+  .auth-btn {
+    border: 1px solid currentColor;
+  }
+}
