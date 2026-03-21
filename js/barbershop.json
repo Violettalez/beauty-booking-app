@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "Igor Ivanovych",
+    "specialty": "Classic haircut",
+    "cost": 200,
+    "duration": 35,
+    "workHours": {
+      "start": 8,
+      "end": 19
+    },
+    "image": "https://via.placeholder.com/300x300?text=Igor",
+    "description": "Professional barber with 15 years of experience. Performs classic haircuts for all hair types",
+    "serviceType": "classicHaircut",
+    "rating": 4.8
+  },
+  {
+    "id": 2,
+    "name": "Pavlo Serhiiovych",
+    "specialty": "Stylish haircut",
+    "cost": 280,
+    "duration": 50,
+    "workHours": {
+      "start": 9,
+      "end": 18
+    },
+    "image": "https://via.placeholder.com/300x300?text=Pavlo",
+    "description": "Creative barber. Performs modern and trendy haircuts. Follows global trends",
+    "serviceType": "styledHaircut",
+    "rating": 4.9
+  },
+  {
+    "id": 3,
+    "name": "Maksym Petrovych",
+    "specialty": "Shaving and beard care",
+    "cost": 250,
+    "duration": 45,
+    "workHours": {
+      "start": 10,
+      "end": 17
+    },
+    "image": "https://via.placeholder.com/300x300?text=Maksym",
+    "description": "Expert in shaving and beard care. Classic shaving and razor artistry",
+    "serviceType": "shaveBeardCare",
+    "rating": 5.0
+  },
+  {
+    "id": 4,
+    "name": "Artem Olehovych",
+    "specialty": "Universal barber",
+    "cost": 220,
+    "duration": 40,
+    "workHours": {
+      "start": 8,
+      "end": 20
+    },
+    "image": "https://via.placeholder.com/300x300?text=Artem",
+    "description": "One of the top barbers. Does everything: from classic haircuts to design work",
+    "serviceType": "classicHaircut",
+    "rating": 4.7
+  },
+  {
+    "id": 5,
+    "name": "Viacheslav Volodymyrovych",
+    "specialty": "Stylish designs",
+    "cost": 300,
+    "duration": 60,
+    "workHours": {
+      "start": 11,
+      "end": 19
+    },
+    "image": "https://via.placeholder.com/300x300?text=Viacheslav",
+    "description": "Barber-artist. Creates unique designs and patterns on hair",
+    "serviceType": "styledHaircut",
+    "rating": 4.9
+  },
+  {
+    "id": 6,
+    "name": "Rozi Mykolaiovych",
+    "specialty": "Classic shaving",
+    "cost": 230,
+    "duration": 40,
+    "workHours": {
+      "start": 9,
+      "end": 19
+    },
+    "image": "https://via.placeholder.com/300x300?text=Rozi",
+    "description": "Specialist in classic shaving. Uses high-quality tools and care products",
+    "serviceType": "shaveBeardCare",
+    "rating": 4.8
+  }
+]

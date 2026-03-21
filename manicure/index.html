@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manicure - Beauty Booking</title>
+    <link rel="stylesheet" href="../css/manicure.css" />
+  </head>
+  <body>
+    <header>
+      <header class="header">
+        <div class="container">
+          <div class="logo">BeautyBook</div>
+
+          <nav class="nav">
+            <ul class="menu">
+              <li><a href="/">Home</a></li>
+              <li><a href="/about/">About</a></li>
+
+              <li class="dropdown">
+                <a href="#">Catalog ▸</a>
+                <ul class="submenu">
+                  <li class="has-submenu">
+                    <a href="/manicure/">Manicure</a>
+                    <ul class="submenu flyout">
+                      <li><a href="/manicure/">Classic manicure</a></li>
+                      <li><a href="/manicure/">Manicure + Coating</a></li>
+                      <li><a href="/manicure/">Manicure + Design</a></li>
+                    </ul>
+                  </li>
+                  <li class="has-submenu">
+                    <a href="/brows/">Brows</a>
+                    <ul class="submenu flyout">
+                      <li><a href="/brows/">Shaping</a></li>
+                      <li><a href="/brows/">Lamination</a></li>
+                      <li><a href="/brows/">Tinting</a></li>
+                    </ul>
+                  </li>
+                  <li class="has-submenu">
+                    <a href="/lashes/">Lashes</a>
+                    <ul class="submenu flyout">
+                      <li><a href="/lashes/">Extensions</a></li>
+                      <li><a href="/lashes/">Lamination</a></li>
+                    </ul>
+                  </li>
+                  <li class="has-submenu">
+                    <a href="/barbershop/">Barbershop</a>
+                    <ul class="submenu flyout">
+                      <li><a href="/barbershop/">Classic haircut</a></li>
+                      <li><a href="/barbershop/">Styled haircut</a></li>
+                      <li><a href="/barbershop/">Shave & Beard Care</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </nav>
+
+          <div class="auth">
+            <div class="guest">
+              <button class="login">Sign In</button>
+              <button class="register">Register</button>
+            </div>
+
+            <div class="profile hidden">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
+              />
+            </div>
+          </div>
+
+          <div class="burger">☰</div>
+        </div>
+      </header>
+    </header>
+
+    <div class="container">
+      <header class="header">
+        <h1>Manicure</h1>
+        <p class="subtitle">Choose the best nail artist for your manicure</p>
+      </header>
+
+      <div class="controls">
+        <div class="search-box">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search by nail artist's name..."
+            class="search-input"
+          />
+          <span class="search-icon">🔍</span>
+        </div>
+
+        <div class="filters">
+          <label for="sortSelect">Sort by:</label>
+          <select id="sortSelect" class="sort-select">
+            <option value="name">By name (A-Z)</option>
+            <option value="price-asc">By price (ascending)</option>
+            <option value="price-desc">By price (descending)</option>
+            <option value="rating">By rating</option>
+            <option value="duration">By duration</option>
+          </select>
+
+          <label for="serviceFilter">Service type:</label>
+          <select id="serviceFilter" class="service-select">
+            <option value="">All services</option>
+            <option value="classic">Classic manicure</option>
+            <option value="gelCoat">Gel polish</option>
+            <option value="design">Nail design</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="cardsContainer" class="cards-container"></div>
+
+      <div id="noResults" class="no-results" style="display: none">
+        <p>
+          😞 Unfortunately, no nail artists were found matching your criteria
+        </p>
+      </div>
+    </div>
+
+    <script src="../js/manicure.js"></script>
+  </body>
+</html>

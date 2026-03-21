@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "Olha Ivanivna",
+    "specialty": "Classic manicure",
+    "cost": 250,
+    "duration": 45,
+    "workHours": {
+      "start": 8,
+      "end": 19
+    },
+    "image": "https://via.placeholder.com/300x300?text=Olha",
+    "description": "Experienced specialist in classic manicure with 10 years of experience. Guarantees quality and neatness",
+    "serviceType": "classic",
+    "rating": 4.8
+  },
+  {
+    "id": 2,
+    "name": "Maria Serhiivna",
+    "specialty": "Gel polish manicure",
+    "cost": 350,
+    "duration": 110,
+    "workHours": {
+      "start": 9,
+      "end": 18
+    },
+    "image": "https://via.placeholder.com/300x300?text=Maria",
+    "description": "Specialist in gel polish. Uses only high-quality materials. Results last up to 3 weeks",
+    "serviceType": "gelCoat",
+    "rating": 4.9
+  },
+  {
+    "id": 3,
+    "name": "Iryna Petrivna",
+    "specialty": "Manicure with design",
+    "cost": 450,
+    "duration": 180,
+    "workHours": {
+      "start": 10,
+      "end": 17
+    },
+    "image": "https://via.placeholder.com/300x300?text=Iryna",
+    "description": "Creative designer with unique ideas. Creates elegant and original designs. Offers advice on colors and style",
+    "serviceType": "design",
+    "rating": 5.0
+  },
+  {
+    "id": 4,
+    "name": "Anna Olegivna",
+    "specialty": "Classic manicure",
+    "cost": 230,
+    "duration": 45,
+    "workHours": {
+      "start": 8,
+      "end": 20
+    },
+    "image": "https://via.placeholder.com/300x300?text=Anna",
+    "description": "Classic manicure specialist. Always disinfects tools. Provides excellent service and a pleasant atmosphere",
+    "serviceType": "classic",
+    "rating": 4.7
+  },
+  {
+    "id": 5,
+    "name": "Kateryna Volodymyrivna",
+    "specialty": "Gel polish manicure with design",
+    "cost": 500,
+    "duration": 180,
+    "workHours": {
+      "start": 11,
+      "end": 19
+    },
+    "image": "https://via.placeholder.com/300x300?text=Kateryna",
+    "description": "Versatile specialist experienced in all types of manicure. Combines gel polish with quality design",
+    "serviceType": "design",
+    "rating": 4.9
+  },
+  {
+    "id": 6,
+    "name": "Lyudmyla Mykolaivna",
+    "specialty": "Gel polish manicure",
+    "cost": 320,
+    "duration": 110,
+    "workHours": {
+      "start": 9,
+      "end": 19
+    },
+    "image": "https://via.placeholder.com/300x300?text=Lyudmyla",
+    "description": "Professional with 15 years of experience. Keeps up with all new trends in gel polish manicure",
+    "serviceType": "gelCoat",
+    "rating": 4.8
+  }
+]

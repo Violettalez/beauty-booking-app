@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "Valentyna Ivanivna",
+    "specialty": "Brow shaping",
+    "cost": 150,
+    "duration": 40,
+    "workHours": {
+      "start": 8,
+      "end": 19
+    },
+    "image": "https://via.placeholder.com/300x300?text=Valentyna",
+    "description": "Experienced brow specialist. Creates the perfect shape according to your face type",
+    "serviceType": "shaping",
+    "rating": 4.9
+  },
+  {
+    "id": 2,
+    "name": "Oksana Serhiivna",
+    "specialty": "Brow lamination",
+    "cost": 220,
+    "duration": 50,
+    "workHours": {
+      "start": 9,
+      "end": 18
+    },
+    "image": "https://via.placeholder.com/300x300?text=Oksana",
+    "description": "Brow lamination specialist. Gives brows a nice matte look for 6-8 weeks",
+    "serviceType": "lamination",
+    "rating": 4.8
+  },
+  {
+    "id": 3,
+    "name": "Nina Petrivna",
+    "specialty": "Brow tinting",
+    "cost": 180,
+    "duration": 35,
+    "workHours": {
+      "start": 10,
+      "end": 17
+    },
+    "image": "https://via.placeholder.com/300x300?text=Nina",
+    "description": "Creative colorist. Selects the perfect color for your brows. Long-lasting tint",
+    "serviceType": "tinting",
+    "rating": 5.0
+  },
+  {
+    "id": 4,
+    "name": "Liliya Olehiivna",
+    "specialty": "Shaping and lamination",
+    "cost": 300,
+    "duration": 80,
+    "workHours": {
+      "start": 8,
+      "end": 20
+    },
+    "image": "https://via.placeholder.com/300x300?text=Liliya",
+    "description": "Versatile specialist. Combines shaping and lamination for maximum effect",
+    "serviceType": "lamination",
+    "rating": 4.9
+  },
+  {
+    "id": 5,
+    "name": "Iryna Volodymyrivna",
+    "specialty": "Complete brow package",
+    "cost": 350,
+    "duration": 90,
+    "workHours": {
+      "start": 11,
+      "end": 19
+    },
+    "image": "https://via.placeholder.com/300x300?text=Iryna",
+    "description": "Professional with 12 years of experience. Performs shaping, lamination, and tinting in one session",
+    "serviceType": "shaping",
+    "rating": 4.7
+  },
+  {
+    "id": 6,
+    "name": "Maria Mykolaivna",
+    "specialty": "Designer shaping",
+    "cost": 200,
+    "duration": 45,
+    "workHours": {
+      "start": 9,
+      "end": 19
+    },
+    "image": "https://via.placeholder.com/300x300?text=Maria",
+    "description": "Specialist in designer brow shaping. Keeps up with all current trends",
+    "serviceType": "shaping",
+    "rating": 4.8
+  }
+]
