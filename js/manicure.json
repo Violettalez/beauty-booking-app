@@ -9,7 +9,7 @@
       "start": 8,
       "end": 19
     },
-    "image": "https://via.placeholder.com/300x300?text=Olha",
+    "image": "/img/woman1.webp",
     "description": "Experienced specialist in classic manicure with 10 years of experience. Guarantees quality and neatness",
     "serviceType": "classic",
     "rating": 4.8
@@ -24,7 +24,7 @@
       "start": 9,
       "end": 18
     },
-    "image": "https://via.placeholder.com/300x300?text=Maria",
+    "image": "/img/woman2.jpg",
     "description": "Specialist in gel polish. Uses only high-quality materials. Results last up to 3 weeks",
     "serviceType": "gelCoat",
     "rating": 4.9
@@ -39,7 +39,7 @@
       "start": 10,
       "end": 17
     },
-    "image": "https://via.placeholder.com/300x300?text=Iryna",
+    "image": "/img/woman3.jpg",
     "description": "Creative designer with unique ideas. Creates elegant and original designs. Offers advice on colors and style",
     "serviceType": "design",
     "rating": 5.0
@@ -54,7 +54,7 @@
       "start": 8,
       "end": 20
     },
-    "image": "https://via.placeholder.com/300x300?text=Anna",
+    "image": "/img/woman4.jpg",
     "description": "Classic manicure specialist. Always disinfects tools. Provides excellent service and a pleasant atmosphere",
     "serviceType": "classic",
     "rating": 4.7
@@ -69,7 +69,7 @@
       "start": 11,
       "end": 19
     },
-    "image": "https://via.placeholder.com/300x300?text=Kateryna",
+    "image": "/img/woman5.jpg",
     "description": "Versatile specialist experienced in all types of manicure. Combines gel polish with quality design",
     "serviceType": "design",
     "rating": 4.9
@@ -84,7 +84,7 @@
       "start": 9,
       "end": 19
     },
-    "image": "https://via.placeholder.com/300x300?text=Lyudmyla",
+    "image": "/img/woman6.jpg",
     "description": "Professional with 15 years of experience. Keeps up with all new trends in gel polish manicure",
     "serviceType": "gelCoat",
     "rating": 4.8

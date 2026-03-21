@@ -9,7 +9,7 @@
       "start": 8,
       "end": 18
     },
-    "image": "https://via.placeholder.com/300x300?text=Sofiya",
+    "image": "/img/woman1.webp",
     "description": "Experienced lash artist. Applies volume lashes that self-replenish. Results last 3-4 weeks",
     "serviceType": "extensions",
     "rating": 4.9
@@ -24,7 +24,7 @@
       "start": 9,
       "end": 19
     },
-    "image": "https://via.placeholder.com/300x300?text=Anastasiya",
+    "image": "/img/woman2.jpg",
     "description": "Specialist in lash lamination. Lifts and curls your lashes naturally",
     "serviceType": "lamination",
     "rating": 4.8
@@ -39,7 +39,7 @@
       "start": 10,
       "end": 17
     },
-    "image": "https://via.placeholder.com/300x300?text=Viktoriya",
+    "image": "/img/woman3.jpg",
     "description": "Creative lash artist. Creates custom extension designs. Provides consultation on shape selection",
     "serviceType": "extensions",
     "rating": 5.0
@@ -54,7 +54,7 @@
       "start": 8,
       "end": 20
     },
-    "image": "https://via.placeholder.com/300x300?text=Halyna",
+    "image": "/img/woman4.jpg",
     "description": "Reliable experienced artist. Performs classic natural lash extensions",
     "serviceType": "extensions",
     "rating": 4.7
@@ -69,7 +69,7 @@
       "start": 11,
       "end": 19
     },
-    "image": "https://via.placeholder.com/300x300?text=Kateryna",
+    "image": "/img/woman5.jpg",
     "description": "Versatile specialist. Combines lamination with lash tinting",
     "serviceType": "lamination",
     "rating": 4.9
@@ -84,7 +84,7 @@
       "start": 9,
       "end": 19
     },
-    "image": "https://via.placeholder.com/300x300?text=Lyudmyla",
+    "image": "/img/woman6.jpg",
     "description": "Specialist in lash correction. Performs refills and replacements",
     "serviceType": "extensions",
     "rating": 4.8

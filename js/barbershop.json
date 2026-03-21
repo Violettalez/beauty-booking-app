@@ -9,7 +9,7 @@
       "start": 8,
       "end": 19
     },
-    "image": "https://via.placeholder.com/300x300?text=Igor",
+    "image": "/img/man1.jpg",
     "description": "Professional barber with 15 years of experience. Performs classic haircuts for all hair types",
     "serviceType": "classicHaircut",
     "rating": 4.8
@@ -24,7 +24,7 @@
       "start": 9,
       "end": 18
     },
-    "image": "https://via.placeholder.com/300x300?text=Pavlo",
+    "image": "/img/man2.jpg",
     "description": "Creative barber. Performs modern and trendy haircuts. Follows global trends",
     "serviceType": "styledHaircut",
     "rating": 4.9
@@ -39,7 +39,7 @@
       "start": 10,
       "end": 17
     },
-    "image": "https://via.placeholder.com/300x300?text=Maksym",
+    "image": "/img/man3.jpg",
     "description": "Expert in shaving and beard care. Classic shaving and razor artistry",
     "serviceType": "shaveBeardCare",
     "rating": 5.0
@@ -54,7 +54,7 @@
       "start": 8,
       "end": 20
     },
-    "image": "https://via.placeholder.com/300x300?text=Artem",
+    "image": "/img/man4.jpg",
     "description": "One of the top barbers. Does everything: from classic haircuts to design work",
     "serviceType": "classicHaircut",
     "rating": 4.7
@@ -69,7 +69,7 @@
       "start": 11,
       "end": 19
     },
-    "image": "https://via.placeholder.com/300x300?text=Viacheslav",
+    "image": "/img/man5.jpg",
     "description": "Barber-artist. Creates unique designs and patterns on hair",
     "serviceType": "styledHaircut",
     "rating": 4.9
@@ -84,7 +84,7 @@
       "start": 9,
       "end": 19
     },
-    "image": "https://via.placeholder.com/300x300?text=Rozi",
+    "image": "/img/woman6.jpg",
     "description": "Specialist in classic shaving. Uses high-quality tools and care products",
     "serviceType": "shaveBeardCare",
     "rating": 4.8
