@@ -2,10 +2,10 @@
   background:
     linear-gradient(
       135deg,
-      rgba(90, 107, 124, 0.95) 0%,
-      rgba(44, 62, 80, 0.95) 100%
+      rgba(90, 107, 124, 0.7) 0%,
+      rgba(44, 62, 80, 0.9) 100%
     ),
-    url("https://images.unsplash.com/photo-1522337660859-02fbefca4702?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80");
+    url("/img/manic.avif");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
