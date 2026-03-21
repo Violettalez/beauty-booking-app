@@ -305,6 +305,7 @@ body {
     flex-direction: column;
     padding: 30px;
     gap: 5px;
+    width: 100%;
   }
 
   .menu > li {
@@ -812,7 +813,8 @@ body {
 .hero {
   height: 90vh;
   min-height: 600px;
-  background: linear-gradient(
+  background:
+    linear-gradient(
       135deg,
       rgba(44, 62, 80, 0.8) 0%,
       rgba(90, 107, 124, 0.8) 100%
@@ -883,7 +885,7 @@ body {
 }
 
 .categories {
-  margin-top: 0;
+  margin-top: 40px;
 }
 
 .category-grid {

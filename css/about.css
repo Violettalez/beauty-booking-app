@@ -1,6 +1,6 @@
 .about {
-.about {
-  background: linear-gradient(
+  background:
+    linear-gradient(
       135deg,
       rgba(90, 107, 124, 0.95) 0%,
       rgba(44, 62, 80, 0.95) 100%
@@ -45,7 +45,6 @@
 }
 
 .about-our-story {
-.about-our-story {
   margin: 80px auto;
   text-align: center;
   max-width: 900px;
@@ -67,7 +66,6 @@
   margin-bottom: 0;
 }
 
-.about-values {
 .about-values {
   margin: 80px auto;
 }
@@ -139,7 +137,6 @@
   margin: 0;
 }
 
-.about-team {
 .about-team {
   margin: 80px auto;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
@@ -343,7 +340,6 @@
   box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
 }
 
-.about-animations {
 @keyframes fadeInDown {
   from {
     opacity: 0;
@@ -366,7 +362,6 @@
   }
 }
 
-.about-card-animations {
 .value-card,
 .team-member,
 .testimonial {
@@ -401,7 +396,6 @@
   animation-delay: 0.2s;
 }
 
-.about-responsive {
 @media screen and (max-width: 1024px) {
   .about h1 {
     font-size: 48px;
@@ -532,7 +526,6 @@
   }
 }
 
-.about-scroll-effects {
 @media (prefers-reduced-motion: no-preference) {
   .value-card,
   .team-member,
@@ -541,12 +534,10 @@
   }
 }
 
-.about-blockquote-styles {
 .testimonial {
   quotes: "“" "”" "‘" "’";
 }
 
-.about-decorative {
 .about-our-story {
   position: relative;
 }
@@ -574,7 +565,6 @@
   }
 }
 
-.about-team-hover {
 .team-member {
   cursor: pointer;
 }
