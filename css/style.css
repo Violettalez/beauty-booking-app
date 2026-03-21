@@ -183,7 +183,26 @@ body {
   opacity: 0.6;
   transition: var(--transition);
 }
+h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #2d3e50;
+  letter-spacing: -0.02em;
+  margin-block: 20px;
+  position: relative;
+  display: inline-block;
+}
 
+h3:after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, #e5b8b4 0%, #d4a09b 100%);
+  border-radius: 2px;
+}
 .has-submenu:hover > a::after {
   transform: translateX(3px);
   opacity: 1;
