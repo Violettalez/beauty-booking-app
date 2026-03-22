@@ -15,25 +15,68 @@
           <ul class="menu">
             <li><a href="/">Home</a></li>
             <li><a href="/about/">About</a></li>
+
             <li class="dropdown">
               <a href="/">Catalog ▸</a>
               <ul class="submenu">
-                <li class="has-submenu"><a href="/manicure/">Manicure</a></li>
-                <li class="has-submenu"><a href="/brows/">Brows</a></li>
-                <li class="has-submenu"><a href="/lashes/">Lashes</a></li>
+                <li class="has-submenu">
+                  <a href="/manicure/">Manicure</a>
+                  <ul class="submenu flyout">
+                    <li>
+                      <a href="/manicure/">Classic manicure</a>
+                    </li>
+                    <li>
+                      <a href="/manicure/">Manicure + Coating</a>
+                    </li>
+                    <li>
+                      <a href="/manicure/">Manicure + Design</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="has-submenu">
+                  <a href="/brows/">Brows</a>
+                  <ul class="submenu flyout">
+                    <li><a href="/brows/">Shaping</a></li>
+                    <li><a href="/brows/">Lamination</a></li>
+                    <li><a href="/brows/">Tinting</a></li>
+                  </ul>
+                </li>
+                <li class="has-submenu">
+                  <a href="/lashes/">Lashes</a>
+                  <ul class="submenu flyout">
+                    <li><a href="/lashes/">Extensions</a></li>
+                    <li><a href="/lashes/">Lamination</a></li>
+                  </ul>
+                </li>
                 <li class="has-submenu">
                   <a href="/barbershop/">Barbershop</a>
+                  <ul class="submenu flyout">
+                    <li>
+                      <a href="/barbershop/">Classic haircut</a>
+                    </li>
+                    <li>
+                      <a href="/barbershop/">Styled haircut</a>
+                    </li>
+                    <li>
+                      <a href="/barbershop/">Shave & Beard Care</a>
+                    </li>
+                  </ul>
                 </li>
               </ul>
             </li>
+
             <li><a href="/contact/">Contact</a></li>
           </ul>
         </nav>
 
         <div class="auth">
           <div class="guest">
-            <button class="login">Sign In</button>
-            <button class="register">Register</button>
+            <a href="/login/" class="login">Sign In</a>
+            <a href="/registration/" class="register">Register</a>
+          </div>
+
+          <div class="profile hidden">
+            <img src="/img/user-icon.png" />
           </div>
         </div>
 
@@ -149,5 +192,6 @@
     </footer>
 
     <script src="/js/menu.js"></script>
+    <script src="/js/check-user.js"></script>
   </body>
 </html>
