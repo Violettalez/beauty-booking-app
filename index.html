@@ -80,8 +80,12 @@
             <a href="/registration/" class="register">Register</a>
           </div>
 
-          <div class="profile hidden" id="loggedIn">
+          <div class="profile hidden dropdown" id="loggedIn">
             <img src="/img/user-icon.png" />
+            <ul class="submenu">
+              <li><a href="/profile/">My Profile</a></li>
+              <li><a href="/logout/" class="logout-link">Logout</a></li>
+            </ul>
           </div>
         </div>
 
@@ -97,7 +101,7 @@
             Manicure, brows, lashes, barbershop and other services from top
             specialists
           </p>
-          <a href="/registration/" class="hero-btn">Book Now</a>
+          <a href="/registration/" class="hero-btn">Registration</a>
         </div>
       </section>
 
@@ -391,7 +395,6 @@
     <script src="/js/menu.js"></script>
     <script src="/js/accordeon.js"></script>
     <script src="/js/swiper.js"></script>
-
     <script src="/js/check-user.js"></script>
   </body>
 </html>

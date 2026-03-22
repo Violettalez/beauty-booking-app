@@ -70,13 +70,17 @@
         </nav>
 
         <div class="auth">
-          <div class="guest">
+          <div class="guest" id="notLoggedIn">
             <a href="/login/" class="login">Sign In</a>
             <a href="/registration/" class="register">Register</a>
           </div>
 
-          <div class="profile hidden">
+          <div class="profile hidden dropdown" id="loggedIn">
             <img src="/img/user-icon.png" />
+            <ul class="submenu">
+              <li><a href="/profile/">My Profile</a></li>
+              <li><a href="/logout/" class="logout-link">Logout</a></li>
+            </ul>
           </div>
         </div>
 
