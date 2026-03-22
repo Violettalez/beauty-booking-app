@@ -1,0 +1,405 @@
+/* profile-page.css - Main content and profile page styling */
+
+/* ===== PROFILE PAGE LAYOUT ===== */
+.profile-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.profile-main {
+  background: var(--card-bg, #ffffff);
+  border-radius: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+}
+
+.profile-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ===== TYPOGRAPHY ===== */
+.profile-main h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-primary, #1a1a2e);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.profile-main h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary, #1a1a2e);
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.profile-main h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary, #1a1a2e);
+  margin-bottom: 1rem;
+}
+
+/* ===== FORM STYLES ===== */
+.profile-form {
+  background: var(--bg-light, #f8f9fa);
+  border-radius: 20px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary, #4a5568);
+  margin-bottom: 0.5rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 12px;
+  background: var(--input-bg, #ffffff);
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-color, #c44569);
+  box-shadow: 0 0 0 3px rgba(196, 69, 105, 0.1);
+}
+
+.form-group input::placeholder {
+  color: var(--text-muted, #a0aec0);
+}
+
+/* ===== BUTTONS ===== */
+.auth-btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  background: var(--primary-color, #c44569);
+  color: white;
+}
+
+.auth-btn:hover {
+  background: var(--primary-dark, #a33e5c);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(196, 69, 105, 0.3);
+}
+
+.auth-btn.ghost {
+  background: transparent;
+  border: 1px solid var(--border-color, #e2e8f0);
+  color: var(--text-secondary, #4a5568);
+}
+
+.auth-btn.ghost:hover {
+  background: #f1f3f5;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ===== APPOINTMENTS LIST ===== */
+.appointments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.appointment-card {
+  background: var(--bg-light, #f8f9fa);
+  border-radius: 16px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.appointment-card:hover {
+  border-color: var(--border-color, #e2e8f0);
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.appointment-info {
+  flex: 1;
+}
+
+.appointment-service {
+  font-weight: 600;
+  color: var(--text-primary, #1a1a2e);
+  margin-bottom: 0.25rem;
+}
+
+.appointment-details {
+  font-size: 0.875rem;
+  color: var(--text-secondary, #4a5568);
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.appointment-details span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.appointment-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.delete-appointment {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  color: var(--text-muted, #a0aec0);
+}
+
+.delete-appointment:hover {
+  background: #fee2e2;
+  color: #e53e3e;
+}
+
+.empty-appointments {
+  text-align: center;
+  padding: 2rem;
+  background: var(--bg-light, #f8f9fa);
+  border-radius: 16px;
+  color: var(--text-muted, #a0aec0);
+}
+
+/* ===== ADD APPOINTMENT FORM ===== */
+.add-appointment {
+  background: var(--bg-light, #f8f9fa);
+  border-radius: 20px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.add-appointment .form-group {
+  margin-bottom: 1rem;
+}
+
+.add-appointment input {
+  background: white;
+}
+
+.add-appointment .auth-btn {
+  width: 100%;
+  background: var(--primary-color, #c44569);
+}
+
+/* ===== SIDEBAR CARDS ===== */
+.card {
+  background: var(--card-bg, #ffffff);
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 1.25rem;
+}
+
+.card h3, .card h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary, #1a1a2e);
+  margin-bottom: 0.75rem;
+}
+
+.card p {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+#sideName {
+  font-weight: 600;
+  color: var(--text-primary, #1a1a2e);
+  font-size: 1rem;
+}
+
+#sideEmail, #sidePhone {
+  color: var(--text-secondary, #4a5568);
+  font-size: 0.813rem;
+  margin-top: 0.25rem;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card ul li {
+  margin-bottom: 0.5rem;
+}
+
+.card ul li a {
+  color: var(--primary-color, #c44569);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.2s ease;
+  display: inline-block;
+}
+
+.card ul li a:hover {
+  color: var(--primary-dark, #a33e5c);
+  text-decoration: underline;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .profile-page {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+  
+  .profile-main {
+    padding: 1.25rem;
+  }
+  
+  .profile-main h1 {
+    font-size: 1.5rem;
+  }
+  
+  .profile-main h2 {
+    font-size: 1.25rem;
+  }
+  
+  .profile-form {
+    padding: 1rem;
+  }
+  
+  .appointment-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  
+  .appointment-actions {
+    align-self: flex-end;
+  }
+  
+  .appointment-details {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .add-appointment [style*="display: flex"] {
+    flex-direction: column;
+  }
+  
+  .add-appointment .form-group {
+    width: 100%;
+  }
+  
+  .auth-btn {
+    width: 100%;
+    text-align: center;
+  }
+  
+  [style*="display: flex; gap: 12px; margin-top: 12px"] {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-main {
+    padding: 1rem;
+  }
+  
+  .card {
+    padding: 1rem;
+  }
+}
+
+/* ===== UTILITY CLASSES ===== */
+.text-muted {
+  color: var(--text-muted, #a0aec0);
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-3 {
+  margin-top: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.appointment-card {
+  animation: fadeIn 0.3s ease;
+}
+
+/* ===== STATUS MESSAGES ===== */
+.success-message {
+  background: #c6f6d5;
+  color: #276749;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.error-message {
+  background: #fed7d7;
+  color: #9b2c2c;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  animation: fadeIn 0.3s ease;
+}
+
+/* ===== VARIABLES (if not defined globally) ===== */
+:root {
+  --primary-color: #c44569;
+  --primary-dark: #a33e5c;
+  --text-primary: #1a1a2e;
+  --text-secondary: #4a5568;
+  --text-muted: #a0aec0;
+  --border-color: #e2e8f0;
+  --bg-light: #f8f9fa;
+  --card-bg: #ffffff;
+}

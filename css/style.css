@@ -126,7 +126,17 @@ body {
   visibility: visible;
   transform: translateY(10px);
 }
-
+.profile.dropdown .submenu {
+  right: 0 !important;
+  left: auto !important;
+}
+.logout-link {
+  color: red !important;
+}
+.profile {
+  position: relative;
+  overflow: visible !important;
+}
 .submenu li {
   position: relative;
 }
@@ -220,7 +230,8 @@ h3:after {
   gap: 10px;
 }
 
-.guest button {
+.guest a {
+  text-decoration: none;
   padding: 8px 16px;
   border: none;
   border-radius: 25px;

@@ -23,14 +23,36 @@ function checkUser() {
 }
 
 function setupLogout() {
+  const logoutLink = document.querySelector(".logout-link");
+  if (logoutLink) {
+    logoutLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      sessionStorage.removeItem("beautybook_current_user");
+      window.location.href = "/login/";
+    });
+  }
+}
+function openProfileMenu() {
   const loggedInDiv = document.getElementById("loggedIn");
-  loggedInDiv.addEventListener("click", () => {
-    sessionStorage.removeItem("beautybook_current_user");
-    window.location.href = "/login/";
+  const profileMenu = document.querySelector(".profile.dropdown .submenu");
+  loggedInDiv.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (window.innerWidth <= 968) {
+      window.location.href = "/profile/";
+      return;
+    }
+    profileMenu.classList.toggle("active");
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!profileMenu.contains(e.target) && !loggedInDiv.contains(e.target)) {
+      profileMenu.classList.remove("active");
+    }
   });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   checkUser();
   setupLogout();
+  openProfileMenu();
 });

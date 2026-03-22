@@ -23,9 +23,15 @@
                 <li class="has-submenu">
                   <a href="/manicure/">Manicure</a>
                   <ul class="submenu flyout">
-                    <li><a href="/manicure/">Classic manicure</a></li>
-                    <li><a href="/manicure/">Manicure + Coating</a></li>
-                    <li><a href="/manicure/">Manicure + Design</a></li>
+                    <li>
+                      <a href="/manicure/">Classic manicure</a>
+                    </li>
+                    <li>
+                      <a href="/manicure/">Manicure + Coating</a>
+                    </li>
+                    <li>
+                      <a href="/manicure/">Manicure + Design</a>
+                    </li>
                   </ul>
                 </li>
                 <li class="has-submenu">
@@ -46,9 +52,15 @@
                 <li class="has-submenu">
                   <a href="/barbershop/">Barbershop</a>
                   <ul class="submenu flyout">
-                    <li><a href="/barbershop/">Classic haircut</a></li>
-                    <li><a href="/barbershop/">Styled haircut</a></li>
-                    <li><a href="/barbershop/">Shave & Beard Care</a></li>
+                    <li>
+                      <a href="/barbershop/">Classic haircut</a>
+                    </li>
+                    <li>
+                      <a href="/barbershop/">Styled haircut</a>
+                    </li>
+                    <li>
+                      <a href="/barbershop/">Shave & Beard Care</a>
+                    </li>
                   </ul>
                 </li>
               </ul>
@@ -59,13 +71,17 @@
         </nav>
 
         <div class="auth">
-          <div class="guest">
+          <div class="guest" id="notLoggedIn">
             <a href="/login/" class="login">Sign In</a>
             <a href="/registration/" class="register">Register</a>
           </div>
 
-          <div class="profile hidden">
+          <div class="profile hidden dropdown" id="loggedIn">
             <img src="/img/user-icon.png" />
+            <ul class="submenu">
+              <li><a href="/profile/">My Profile</a></li>
+              <li><a href="/logout/" class="logout-link">Logout</a></li>
+            </ul>
           </div>
         </div>
 
