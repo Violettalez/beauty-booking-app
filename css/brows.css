@@ -357,7 +357,11 @@ body {
   .card-info {
     grid-template-columns: 1fr;
   }
-
+  .time-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
   .info-item {
     flex-direction: row;
     justify-content: space-between;

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/profile.css" />
   </head>
   <body>
-   <header class="header">
+    <header class="header">
       <div class="container">
         <div class="logo">BeautyBook</div>
 
@@ -135,7 +135,29 @@
               </div>
             </form>
 
-       
+            <div class="appointments-section" style="margin-top: 40px">
+              <h2>My Appointments</h2>
+              <div class="table-container">
+                <table class="appointments-table">
+                  <thead>
+                    <tr>
+                      <th>Service</th>
+                      <th>Master</th>
+                      <th>Date</th>
+                      <th>Time</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="appointmentsList"></tbody>
+                </table>
+                <p
+                  id="noAppointments"
+                  style="display: none; text-align: center; padding: 20px"
+                >
+                  You have no appointments yet.
+                </p>
+              </div>
+            </div>
           </div>
 
           <aside class="profile-side">
@@ -159,7 +181,7 @@
       </section>
     </main>
 
-     <footer class="footer">
+    <footer class="footer">
       <div class="container">
         <div class="footer-content">
           <div class="footer-col">

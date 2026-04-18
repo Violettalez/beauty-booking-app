@@ -1,66 +1,9 @@
 class AuthSystem {
   constructor() {
     this.users = [];
+    this.baseURL = "http://localhost";
     this.currentUser = null;
-    this.JSON_FILE = "users.json";
-    this.loadUsers();
     this.initEventListeners();
-  }
-
-  async loadUsers() {
-    try {
-      const response = await fetch(this.JSON_FILE);
-      if (response.ok) {
-        const data = await response.json();
-        this.users = data.users || [];
-      } else {
-        this.users = [
-          {
-            id: "1",
-            name: "Test User",
-            email: "test@example.com",
-            phone: "+1 (555) 555-5555",
-            password: this.hashPassword("password123"),
-            createdAt: new Date().toISOString(),
-            lastLogin: null,
-          },
-        ];
-        await this.saveUsersToFile();
-      }
-    } catch (error) {
-      this.users = [
-        {
-          id: "1",
-          name: "Test User",
-          email: "test@example.com",
-          phone: "+1 (555) 555-5555",
-          password: this.hashPassword("password123"),
-          createdAt: new Date().toISOString(),
-          lastLogin: null,
-        },
-      ];
-    }
-  }
-
-  async saveUsersToFile() {
-    try {
-      localStorage.setItem(
-        "beautybook_users_backup",
-        JSON.stringify(this.users, null, 2),
-      );
-
-      const dataStr = JSON.stringify({ users: this.users }, null, 2);
-      const dataBlob = new Blob([dataStr], { type: "application/json" });
-      const url = URL.createObjectURL(dataBlob);
-
-      return true;
-    } catch (error) {
-      return false;
-    }
-  }
-
-  hashPassword(password) {
-    return btoa(password);
   }
 
   validateEmail(email) {
@@ -90,68 +33,63 @@ class AuthSystem {
   }
 
   async register(userData) {
-    if (this.users.some((u) => u.email === userData.email)) {
+    try {
+      const response = await fetch(`${this.baseURL}/api/registration.php`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: userData.name,
+          email: userData.email,
+          phone: userData.phone,
+          password: userData.password,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || "Registration failed");
+      }
+
+      return result;
+    } catch (error) {
+      console.error("Registration error:", error);
       return {
         success: false,
-        message: "A user with this email already exists",
+        message: error.message || "Network error. Please try again.",
       };
-    }
-
-    const newUser = {
-      id: Date.now().toString(),
-      name: userData.name,
-      email: userData.email,
-      phone: userData.phone || "",
-      password: this.hashPassword(userData.password),
-      createdAt: new Date().toISOString(),
-      lastLogin: null,
-    };
-
-    this.users.push(newUser);
-
-    const saved = await this.saveUsersToFile();
-
-    if (saved) {
-      return {
-        success: true,
-        message: "Registration successful!",
-        user: newUser,
-      };
-    } else {
-      return { success: false, message: "Error saving data" };
     }
   }
 
-  login(email, password) {
-    const user = this.users.find((u) => u.email === email);
+  async login(email, password) {
+    try {
+      const response = await fetch(`${this.baseURL}/api/login.php`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
-    if (!user) {
-      return { success: false, message: "User not found" };
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || "Login failed");
+      }
+
+      return result;
+    } catch (error) {
+      console.error("Login error:", error);
+      return {
+        success: false,
+        message: error.message || "Network error. Please try again.",
+      };
     }
-
-    if (user.password !== this.hashPassword(password)) {
-      return { success: false, message: "Invalid password" };
-    }
-
-    user.lastLogin = new Date().toISOString();
-    this.saveUsersToFile();
-
-    this.currentUser = user;
-    sessionStorage.setItem(
-      "beautybook_current_user",
-      JSON.stringify({
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        phone: user.phone,
-      }),
-    );
-
-    return { success: true, message: "Login successful!", user };
   }
 
   logout() {
-    this.currentUser = null;
     sessionStorage.removeItem("beautybook_current_user");
   }
 
@@ -357,10 +295,14 @@ class AuthSystem {
         if (btnText) btnText.textContent = "Signing in...";
       }
 
-      setTimeout(() => {
-        const result = this.login(email, password);
+      setTimeout(async () => {
+        const result = await this.login(email, password);
 
         if (result.success) {
+          sessionStorage.setItem(
+            "beautybook_current_user",
+            JSON.stringify(result.user),
+          );
           this.showNotification("Login successful!", "success");
           setTimeout(() => {
             window.location.href = "/";

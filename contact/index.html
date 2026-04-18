@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/contact.css" />
   </head>
   <body>
-   <header class="header">
+    <header class="header">
       <div class="container">
         <div class="logo">BeautyBook</div>
 
@@ -168,7 +168,7 @@
       </section>
     </main>
 
-      <footer class="footer">
+    <footer class="footer">
       <div class="container">
         <div class="footer-content">
           <div class="footer-col">
@@ -260,7 +260,17 @@
         </div>
       </div>
     </footer>
-
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init({
+          publicKey: "XvqgURzyAgyaMgj_m",
+        });
+      })();
+    </script>
     <script src="/js/menu.js"></script>
     <script src="/js/contact.js"></script>
     <script src="/js/check-user.js"></script>

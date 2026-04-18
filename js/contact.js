@@ -13,14 +13,20 @@ document.addEventListener("DOMContentLoaded", function () {
   const messageError = document.getElementById("messageError");
   const contactSuccess = document.getElementById("contactSuccess");
 
+  let user = JSON.parse(sessionStorage.getItem("beautybook_current_user"));
+  if (user) {
+    nameInput.value = user.name || "";
+    emailInput.value = user.email || "";
+    phoneInput.value = user.phone || "";
+  }
+
   function validateEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
 
-  function validateUSPhone(phone) {
+  function validatePhone(phone) {
     if (!phone) return true;
-    // Accept formats like +1 (555) 555-5555 or 555-555-5555
-    return /^(\+1\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/.test(phone);
+    return /^(\+38\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/.test(phone);
   }
 
   function clearErrors() {
@@ -48,8 +54,8 @@ document.addEventListener("DOMContentLoaded", function () {
       valid = false;
     }
 
-    if (phoneInput.value && !validateUSPhone(phoneInput.value.trim())) {
-      phoneError.textContent = "Please enter a valid US phone number.";
+    if (phoneInput.value && !validatePhone(phoneInput.value.trim())) {
+      phoneError.textContent = "Please enter a valid phone number.";
       phoneError.style.display = "block";
       valid = false;
     }
@@ -62,9 +68,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!valid) return;
 
+    let now = new Date();
+    let hours = now.getHours().toString().padStart(2, "0");
+    let minutes = now.getMinutes().toString().padStart(2, "0");
+    let time = `${hours}:${minutes}`;
+
+    emailjs.send("service_4mt4wq9", "template_vg8tr0y", {
+      name: nameInput.value.trim(),
+      time: time,
+      message: messageInput.value.trim(),
+      phone: phoneInput.value.trim() || null,
+      email: emailInput.value.trim(),
+    });
     alert("Message sent — thank you!");
     if (contactSuccess)
       contactSuccess.textContent = "Message sent — thank you!";
-    form.reset();
+    messageInput.value = "";
   });
 });

@@ -7,11 +7,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function loadLashesData() {
   try {
-    const response = await fetch("../js/lashes.json");
-    lashesData = await response.json();
-    renderCards(lashesData);
+    const response = await fetch(
+      "http://localhost/api/get-data.php?category_id=3",
+    );
+    const data = await response.json();
+
+    if (Array.isArray(data)) {
+      lashesData = data;
+      renderCards(lashesData);
+    } else {
+      console.error("Server error or invalid data format:", data);
+    }
   } catch (error) {
     console.error("Error loading data:", error);
+    const container = document.getElementById("cardsContainer");
+    if (container)
+      container.innerHTML =
+        "<p>Error loading data. Please check your connection.</p>";
   }
 }
 
@@ -20,59 +32,66 @@ function setupEventListeners() {
   const sortSelect = document.getElementById("sortSelect");
   const serviceFilter = document.getElementById("serviceFilter");
 
-  searchInput.addEventListener("input", filterAndSort);
-  sortSelect.addEventListener("change", filterAndSort);
-  serviceFilter.addEventListener("change", filterAndSort);
+  if (searchInput) searchInput.addEventListener("input", filterAndSort);
+  if (sortSelect) sortSelect.addEventListener("change", filterAndSort);
+  if (serviceFilter) serviceFilter.addEventListener("change", filterAndSort);
 }
 
-function getAvailableSlots(master) {
-  const slots = {
-    today: [],
-    tomorrow: [],
-  };
+async function getBookedSlotsFromDB(masterId) {
+  try {
+    const response = await fetch(
+      `http://localhost/api/get-booked-slots.php?master_id=${masterId}`,
+    );
+    const bookedData = await response.json();
 
-  const durationMinutes = master.duration;
-  const { start, end } = master.workHours;
+    const booked = { today: [], tomorrow: [] };
+    const todayStr = new Date().toISOString().split("T")[0];
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const tomorrowStr = tomorrow.toISOString().split("T")[0];
 
-  const bookedSlots = generateBookedSlots(master.id);
-
-  slots.today = generateTimeSlots(
-    start,
-    end,
-    durationMinutes,
-    bookedSlots.today,
-  );
-
-  slots.tomorrow = generateTimeSlots(
-    start,
-    end,
-    durationMinutes,
-    bookedSlots.tomorrow,
-  );
-
-  return slots;
+    bookedData.forEach((slot) => {
+      const timeShort = slot.appointment_time.substring(0, 5);
+      if (slot.appointment_date === todayStr) {
+        booked.today.push(timeShort);
+      } else if (slot.appointment_date === tomorrowStr) {
+        booked.tomorrow.push(timeShort);
+      }
+    });
+    return booked;
+  } catch (e) {
+    console.error("Error: ", e);
+    return { today: [], tomorrow: [] };
+  }
 }
 
-function generateBookedSlots(masterId) {
-  const bookedMap = {
-    1: { today: ["09:00", "11:30", "14:00"], tomorrow: ["10:00"] },
-    2: { today: ["10:00", "12:00", "16:00"], tomorrow: ["11:00", "15:00"] },
-    3: { today: ["11:00", "15:00"], tomorrow: ["12:00", "16:00"] },
-    4: { today: ["09:30", "13:00"], tomorrow: ["14:00"] },
-    5: { today: ["12:00", "16:00"], tomorrow: ["13:00"] },
-    6: { today: ["10:30", "14:00"], tomorrow: ["15:00"] },
-  };
+function getAvailableSlotsWithBooked(master, bookedSlots) {
+  const start = parseInt(master.workHoursStart);
+  const end = parseInt(master.workHoursEnd);
+  const duration = parseInt(master.duration) || 60;
 
-  return bookedMap[masterId] || { today: [], tomorrow: [] };
+  return {
+    today: generateTimeSlots(start, end, duration, bookedSlots.today, true),
+    tomorrow: generateTimeSlots(
+      start,
+      end,
+      duration,
+      bookedSlots.tomorrow,
+      false,
+    ),
+  };
 }
 
 function generateTimeSlots(
   startHour,
   endHour,
   durationMinutes,
-  bookedSlots = {},
+  bookedSlots = [],
+  isToday = false,
 ) {
   const slots = [];
+  const now = new Date();
+
   let currentTime = new Date();
   currentTime.setHours(startHour, 0, 0, 0);
 
@@ -81,42 +100,26 @@ function generateTimeSlots(
 
   while (currentTime < endTime) {
     const timeString = formatTime(currentTime);
-    const isBooked = bookedSlots.includes && bookedSlots.includes(timeString);
+    const isPast = isToday && currentTime.getTime() < now.getTime();
+    const isBooked = bookedSlots.includes(timeString);
 
-    if (!isSlotOverlapping(currentTime, durationMinutes, bookedSlots)) {
+    if (!isPast) {
       slots.push({
         time: timeString,
         isBooked: isBooked,
       });
     }
-
     currentTime.setMinutes(currentTime.getMinutes() + durationMinutes);
   }
-
-  return slots.slice(0, 5);
-}
-
-function isSlotOverlapping(startTime, durationMinutes, bookedSlots) {
-  if (!bookedSlots || bookedSlots.length === 0) return false;
-
-  const endTime = new Date(startTime);
-  endTime.setMinutes(endTime.getMinutes() + durationMinutes);
-
-  return bookedSlots.some((bookedTimeStr) => {
-    const [hours, minutes] = bookedTimeStr.split(":").map(Number);
-    const bookedStart = new Date(startTime);
-    bookedStart.setHours(hours, minutes, 0, 0);
-    const bookedEnd = new Date(bookedStart);
-    bookedEnd.setMinutes(bookedEnd.getMinutes() + 60);
-
-    return startTime < bookedEnd && endTime > bookedStart;
-  });
+  return slots;
 }
 
 function formatTime(date) {
-  const hours = String(date.getHours()).padStart(2, "0");
-  const minutes = String(date.getMinutes()).padStart(2, "0");
-  return `${hours}:${minutes}`;
+  return (
+    date.getHours().toString().padStart(2, "0") +
+    ":" +
+    date.getMinutes().toString().padStart(2, "0")
+  );
 }
 
 function filterAndSort() {
@@ -127,109 +130,70 @@ function filterAndSort() {
   const serviceValue = document.getElementById("serviceFilter").value;
 
   let filtered = lashesData.filter((master) => {
-    const matchesSearch =
-      master.name.toLowerCase().includes(searchValue) ||
-      master.specialty.toLowerCase().includes(searchValue) ||
-      master.description.toLowerCase().includes(searchValue);
+    const matchesSearch = master.name.toLowerCase().includes(searchValue);
     const matchesService = !serviceValue || master.serviceType === serviceValue;
-
     return matchesSearch && matchesService;
   });
 
   filtered.sort((a, b) => {
-    switch (sortValue) {
-      case "name":
-        return a.name.localeCompare(b.name, "uk");
-      case "price-asc":
-        return a.cost - b.cost;
-      case "price-desc":
-        return b.cost - a.cost;
-      case "rating":
-        return b.rating - a.rating;
-      case "duration":
-        return a.duration - b.duration;
-      default:
-        return 0;
-    }
+    if (sortValue === "price-asc") return a.cost - b.cost;
+    if (sortValue === "price-desc") return b.cost - a.cost;
+    if (sortValue === "rating") return b.rating - a.rating;
+    if (sortValue === "name") return a.name.localeCompare(b.name, "uk");
+    if (sortValue === "duration") return a.duration - b.duration;
+    return 0;
   });
 
   renderCards(filtered);
 }
 
-function renderCards(data) {
+async function renderCards(data) {
   const container = document.getElementById("cardsContainer");
   const noResults = document.getElementById("noResults");
 
+  if (!container) return;
   container.innerHTML = "";
 
   if (data.length === 0) {
-    noResults.style.display = "block";
+    if (noResults) noResults.style.display = "block";
     return;
   }
+  if (noResults) noResults.style.display = "none";
 
-  noResults.style.display = "none";
-
-  data.forEach((master) => {
-    const slots = getAvailableSlots(master);
+  for (const master of data) {
+    const bookedSlots = await getBookedSlotsFromDB(master.id);
+    const slots = getAvailableSlotsWithBooked(master, bookedSlots);
     const card = createCard(master, slots);
     container.appendChild(card);
-  });
+  }
 }
 
 function createCard(master, slots) {
   const card = document.createElement("div");
   card.className = "card";
 
-  const todayDate = new Date();
-  const tomorrowDate = new Date(todayDate);
-  tomorrowDate.setDate(tomorrowDate.getDate() + 1);
+  const todayStr = new Date().toISOString().split("T")[0];
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const tomorrowStr = tomorrow.toISOString().split("T")[0];
 
-  const formatDate = (date) => {
-    const today = new Date();
-    if (date.toDateString() === today.toDateString()) {
-      return "Today";
-    } else {
-      return "Tomorrow";
-    }
+  const renderSlots = (daySlots, dateStr) => {
+    if (daySlots.length === 0)
+      return '<span style="color: #ccc;">No slots</span>';
+
+    return daySlots
+      .map(
+        (slot) => `
+            <div class="slot ${slot.isBooked ? "booked" : ""}" 
+                 data-time="${slot.time}" 
+                 data-date="${dateStr}"
+                 style="${slot.isBooked ? "pointer-events: none; opacity: 0.5;" : "cursor: pointer;"}">
+                ${slot.time}
+            </div>
+        `,
+      )
+      .join("");
   };
-
-  const slotsHTML = `
-        <div class="available-times">
-            <span class="time-label">📅 Available times</span>
-            
-            <div class="time-slots">
-                <span class="time-slot-label">${formatDate(todayDate)}:</span>
-                <div class="slots-list">
-                    ${slots.today
-                      .map(
-                        (slot) => `
-                        <div class="slot ${slot.isBooked ? "booked" : ""}" 
-                             title="${slot.isBooked ? "Booked" : "Available"}">
-                            ${slot.time}
-                        </div>
-                    `,
-                      )
-                      .join("")}
-                </div>
-            </div>
-
-            <div class="time-slots">
-                <span class="time-slot-label">${formatDate(tomorrowDate)}:</span>
-                <div class="slots-list">
-                    ${slots.tomorrow
-                      .map(
-                        (slot) => `
-                        <div class="slot ${slot.isBooked ? "booked" : ""}"
-                             title="${slot.isBooked ? "Booked" : "Available"}">
-                            ${slot.time}
-                        </div>
-                    `,
-                      )
-                      .join("")}
-                </div>
-            </div>
-        </div>
-    `;
 
   card.innerHTML = `
         <img src="${master.image}" alt="${master.name}" class="card-image">
@@ -239,56 +203,77 @@ function createCard(master, slots) {
                     <div class="card-title">${master.name}</div>
                     <div class="card-specialty">${master.specialty}</div>
                 </div>
-                <div class="card-rating">
-                    <span class="star">★</span>
-                    <span>${master.rating}</span>
-                </div>
+                <div class="card-rating">⭐ ${master.rating}</div>
             </div>
-
             <p class="card-description">${master.description}</p>
-
             <div class="card-info">
-                <div class="info-item">
-                    <span class="info-label">Working hours</span>
-                    <span class="info-value work-hours">
-                        ${String(master.workHours.start).padStart(2, "0")}:00 - ${String(master.workHours.end).padStart(2, "0")}:00
-                    </span>
+                <div class="info-item"><span>Hours:</span> <b>${master.workHoursStart}:00-${master.workHoursEnd}:00</b></div>
+                <div class="info-item"><span>Duration:</span> <b>${master.duration} min</b></div>
+                <div class="info-item"><span>Price:</span> <b>${master.cost} ₴</b></div>
+            </div>
+            <div class="available-times">
+                <div class="time-row">
+                    <span>Today:</span>
+                    <div class="slots-list">${renderSlots(slots.today, todayStr)}</div>
                 </div>
-                <div class="info-item">
-                    <span class="info-label">Duration</span>
-                    <span class="info-value duration">${master.duration} min</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Price</span>
-                    <span class="info-value price">${master.cost} ₴</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Rating</span>
-                    <span class="info-value">⭐ ${master.rating}</span>
+                <div class="time-row">
+                    <span>Tomorrow:</span>
+                    <div class="slots-list">${renderSlots(slots.tomorrow, tomorrowStr)}</div>
                 </div>
             </div>
-
-            ${slotsHTML}
         </div>
     `;
 
-  card.querySelectorAll(".slot:not(.booked)").forEach((slot) => {
-    slot.addEventListener("click", () => {
-      alert(`Booking with ${master.name} at ${slot.textContent}`);
+  card.querySelectorAll(".slot:not(.booked)").forEach((slotElement) => {
+    slotElement.addEventListener("click", () => {
+      const time = slotElement.getAttribute("data-time");
+      const date = slotElement.getAttribute("data-date");
+
+      if (
+        confirm(
+          `Make an appointment with master ${master.name} on ${date} at ${time}?`,
+        )
+      ) {
+        bookMaster(master.id, master.service_id || master.id, date, time);
+      }
     });
   });
 
   return card;
 }
 
-function formatDuration(minutes) {
-  if (minutes < 60) {
-    return `${minutes} min`;
-  } else if (minutes % 60 === 0) {
-    return `${Math.floor(minutes / 60)} h`;
-  } else {
-    const hours = Math.floor(minutes / 60);
-    const mins = minutes % 60;
-    return `${hours} h ${mins} min`;
+async function bookMaster(masterId, serviceId, date, time) {
+  const userData = sessionStorage.getItem("beautybook_current_user");
+  if (!userData) {
+    alert("Please log in to book an appointment!");
+    window.location.href = "/login/";
+    return;
+  }
+
+  const user = JSON.parse(userData);
+  const bookingData = {
+    user_id: user.id,
+    master_id: masterId,
+    service_id: serviceId,
+    date: date,
+    time: time,
+  };
+
+  try {
+    const response = await fetch("http://localhost/api/book-appointments.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(bookingData),
+    });
+
+    const result = await response.json();
+    if (result.message) {
+      alert("Great! " + result.message);
+      location.reload();
+    } else {
+      alert("Error: " + result.error);
+    }
+  } catch (e) {
+    console.error("Booking error:", e);
   }
 }
