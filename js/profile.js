@@ -36,8 +36,27 @@ document.addEventListener("DOMContentLoaded", () => {
       phone: phoneInput.value.trim(),
     };
 
-    if (!updatedData.name || !updatedData.email) {
-      alert("Enter at least name and email!");
+    const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const validatePhone = (phone) => {
+      if (!phone) return true;
+      return /^(\+38\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/.test(phone);
+    };
+
+    if (!updatedData.name || updatedData.name.length < 2) {
+      alert("Please enter a valid name (at least 2 characters).");
+      nameInput.focus();
+      return;
+    }
+
+    if (!updatedData.email || !validateEmail(updatedData.email)) {
+      alert("Please enter a valid email address.");
+      emailInput.focus();
+      return;
+    }
+
+    if (updatedData.phone && !validatePhone(updatedData.phone)) {
+      alert("Please enter a valid phone number!");
+      phoneInput.focus();
       return;
     }
 
@@ -137,10 +156,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const result = await response.json();
       if (result.success) {
         alert("Appointment cancelled!");
-        loadUserAppointments(); 
+        loadUserAppointments();
       }
     } catch (error) {
       alert("Error cancelling appointment.");
     }
   };
+
+  module.exports = { validatePhone, validateEmail };
 });
