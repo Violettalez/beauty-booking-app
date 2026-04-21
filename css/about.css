@@ -140,7 +140,7 @@
 .about-team {
   margin: 80px auto;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  padding: 80px 0;
+  padding-block: 80px;
 }
 
 .about-team .container {

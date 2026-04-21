@@ -223,17 +223,19 @@ function createCard(master, slots) {
                 </div>
                 <div class="card-rating">⭐ ${master.rating}</div>
             </div>
+            <p class="card-description">${master.description}</p>
             <div class="card-info">
-                <div class="info-item"><span>Ціна:</span> <b>${master.cost} ₴</b></div>
-                <div class="info-item"><span>Час:</span> <b>${master.duration} хв</b></div>
+                <div class="info-item"><span>Hours:</span> <b>${master.workHoursStart}:00-${master.workHoursEnd}:00</b></div>
+                <div class="info-item"><span>Duration:</span> <b>${master.duration} min</b></div>
+                <div class="info-item"><span>Price:</span> <b>${master.cost} ₴</b></div>
             </div>
             <div class="available-times">
                 <div class="time-row">
-                    <span>Сьогодні:</span>
+                    <span>Today:</span>
                     <div class="slots-list">${renderSlots(slots.today, todayStr)}</div>
                 </div>
                 <div class="time-row">
-                    <span>Завтра:</span>
+                    <span>Tomorrow:</span>
                     <div class="slots-list">${renderSlots(slots.tomorrow, tomorrowStr)}</div>
                 </div>
             </div>
@@ -250,7 +252,7 @@ function createCard(master, slots) {
           `Make an appointment with master ${master.name} on ${date} at ${time}?`,
         )
       ) {
-        bookMaster(master.id, master.id, date, time);
+        bookMaster(master.id, master.service_id || master.id, date, time);
       }
     });
   });

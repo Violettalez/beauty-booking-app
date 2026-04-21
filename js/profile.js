@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const result = await response.json();
       if (result.success) {
         alert("Appointment cancelled!");
-        loadUserAppointments(); // Вона буде доступна, бо знаходиться в тій же області
+        loadUserAppointments(); 
       }
     } catch (error) {
       alert("Error cancelling appointment.");

@@ -473,6 +473,14 @@ h3:after {
     padding: 15px;
   }
 }
+@media screen and (max-width: 400px) {
+  .logo {
+    font-size: 12px;
+  }
+  .guest a {
+    padding: 4px 8px;
+  }
+}
 
 @keyframes slideIn {
   from {
@@ -1128,6 +1136,9 @@ h3:after {
   align-items: center;
   transition: var(--transition);
   border: 1px solid rgba(232, 197, 176, 0.1);
+  p {
+    max-width: 80%;
+  }
 }
 
 .faq-question:hover {
