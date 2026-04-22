@@ -22,13 +22,20 @@ class AuthSystem {
   }
 
   getPasswordStrength(password) {
-    if (!password) return 0;
+    if (!password || password.length === 0) return 0;
+
     let strength = 0;
+
+    if (password.length > 0 && password.length < 6) {
+      strength += 1;
+      return strength;
+    }
+
     if (password.length >= 6) strength += 1;
-    if (password.length >= 8) strength += 1;
     if (/[A-Z]/.test(password)) strength += 1;
     if (/[0-9]/.test(password)) strength += 1;
     if (/[^A-Za-z0-9]/.test(password)) strength += 1;
+
     return Math.min(strength, 3);
   }
 
